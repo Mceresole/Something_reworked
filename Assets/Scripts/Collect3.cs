@@ -1,271 +1,59 @@
-ï»¿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class Collect3 : MonoBehaviour
 {
-    // [Head, Body1, Body2, ...]
-    private static LinkedList<Direction> snakePosition = new LinkedList<Direction>();
-    public GameObject pomme;
-    protected const float SNAKE_SPEED = 0.4f;
+    public GameObject gameOver;
+    public GameObject victoire;
+    public Canvas canvas;
+    public Text nb_pommes;
 
-    //public List<GameObject> pommes;
-    public static Collect3 body;
-    private double x;
-    private double y;
-    public static int MAX_X = 8;
-    public static int MAX_Y = 8;
-    public Direction direction;
-    public Direction precDirection;
-    public Boolean hasChangedDirection;
-    SpriteRenderer spriteRenderer;
-    GameObject boutton_up;
-    GameObject boutton_down;
-    GameObject boutton_right;
-    GameObject boutton_left;
-    public static int maxPommes = 7;
-    public static int nbPommes;
-    public Sprite pomme1, pomme2, pomme3, pomme4, pomme5, pomme6, pomme7;
-    public static bool start;
 
-    public enum Direction
+    void OnTriggerEnter(Collider collision)
     {
-        LEFT,
-        UP,
-        RIGHT,
-        DOWN,
-    }
-
-
-    private void Start()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        if (name == "snake_head")
+        if (collision.gameObject.name.StartsWith("mur"))
         {
-            body = this;
-            direction = Direction.RIGHT;
-            precDirection = Direction.RIGHT;
-            hasChangedDirection = false;
+            gameOver.SetActive(true);
+            StartCoroutine(wait(2));
+            SceneManager.LoadScene("RamboACAABB");
         }
-    }
-
-    private void Move()
-    {
-
-        x = 0.0;
-        y = 0.0;
-        if (hasChangedDirection)
+        else if (collision.gameObject.name.StartsWith("pomme"))
         {
-            int r = 0;
-            if (body.precDirection == Direction.RIGHT && body.direction == Direction.UP)
+            canvas.transform.GetComponent<CollectCanvas3>().nbPommes++;
+            nb_pommes.transform.GetComponent<Text>().text = "pommes récoltées : " + canvas.transform.GetComponent<CollectCanvas3>().nbPommes + "/" + canvas.transform.GetComponent<CollectCanvas3>().maxPommes;
+            if (canvas.transform.GetComponent<CollectCanvas3>().nbPommes == canvas.transform.GetComponent<CollectCanvas3>().maxPommes)
             {
-                r = 90;
+                victoire.SetActive(true);
+                StartCoroutine(wait(2));
+                SceneManager.LoadScene("PilotageACAABA");
             }
-            if (body.precDirection == Direction.RIGHT && body.direction == Direction.DOWN)
-            {
-                r = -90;
-            }
-            if (body.precDirection == Direction.UP && body.direction == Direction.RIGHT)
-            {
-                r = -90;
-            }
-            if (body.precDirection == Direction.UP && body.direction == Direction.LEFT)
-            {
-                r = 90;
-            }
-            if (body.precDirection == Direction.LEFT && body.direction == Direction.UP)
-            {
-                r = -90;
-            }
-            if (body.precDirection == Direction.LEFT && body.direction == Direction.DOWN)
-            {
-                r = 90;
-            }
-            if (body.precDirection == Direction.DOWN && body.direction == Direction.RIGHT)
-            {
-                r = 90;
-            }
-            if (body.precDirection == Direction.DOWN && body.direction == Direction.LEFT)
-            {
-                r = -90;
-            }
-            body.transform.Rotate(0, 0, r);
-            body.hasChangedDirection = false;
-            body.precDirection = body.direction;
 
-        }
-        // translation
-        switch (body.direction)
-        {
-            case Direction.LEFT:
-                x -= 1;
-                break;
-            case Direction.UP:
-                y += 1;
-                break;
-            case Direction.DOWN:
-                y -= 1;
-                break;
-            case Direction.RIGHT:
-                x += 1;
-                break;
-        }
-        body.transform.position += new Vector3(
-           (float)x * SNAKE_SPEED * Time.deltaTime,
-           (float)y * SNAKE_SPEED * Time.deltaTime,
-           0
-        );
-
-
-    }
-
-    private void Update()
-    {
-        if (start)
-        {
-            if (name.StartsWith("apple"))
+            GameObject pomme = canvas.transform.GetComponent<CollectCanvas3>().pomme;
+            pomme.GetComponent<RectTransform>().anchoredPosition = new Vector2(
+                UnityEngine.Random.Range(canvas.transform.GetComponent<CollectCanvas3>().minX, canvas.transform.GetComponent<CollectCanvas3>().maxX),
+                UnityEngine.Random.Range(canvas.transform.GetComponent<CollectCanvas3>().minY, canvas.transform.GetComponent<CollectCanvas3>().maxY)
+            );
+            float x = pomme.GetComponent<RectTransform>().anchoredPosition.x;
+            float y = pomme.GetComponent<RectTransform>().anchoredPosition.y;
+            while ((x > canvas.transform.GetComponent<CollectCanvas3>().intminX && x < canvas.transform.GetComponent<CollectCanvas3>().intmaxX
+                            && y > canvas.transform.GetComponent<CollectCanvas3>().intminY && y < canvas.transform.GetComponent<CollectCanvas3>().intmaxY))
             {
-                switch (nbPommes)
-                {
-                    case 1:
-                        spriteRenderer.sprite = pomme1;
-                        break;
-                    case 2:
-                        spriteRenderer.sprite = pomme2;
-                        break;
-                    case 3:
-                        spriteRenderer.sprite = pomme3;
-                        break;
-                    case 4:
-                        spriteRenderer.sprite = pomme4;
-                        break;
-                    case 5:
-                        spriteRenderer.sprite = pomme5;
-                        break;
-                    case 6:
-                        spriteRenderer.sprite = pomme6;
-                        break;
-                    case 7:
-                        spriteRenderer.sprite = pomme7;
-                        break;
-                }
-            }
-            Move();
-        }
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            if (body.direction != Direction.DOWN)
-            {
-                body.direction = Direction.UP;
-                body.hasChangedDirection = true;
-                Debug.Log("change direction");
-                if (!start)
-                    start = true;
-            }
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            if (body.direction != Direction.UP)
-            {
-                body.direction = Direction.DOWN;
-                body.hasChangedDirection = true;
-                Debug.Log("change direction");
-                if (!start)
-                    start = true;
-            }
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            if (body.direction != Direction.RIGHT)
-            {
-                body.direction = Direction.LEFT;
-                body.hasChangedDirection = true;
-                Debug.Log("change direction");
-                if (!start)
-                    start = true;
-            }
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            if (body.direction != Direction.LEFT)
-            {
-                body.direction = Direction.RIGHT;
-                body.hasChangedDirection = true;
-                Debug.Log("change direction");
-                if (!start)
-                    start = true;
-            }
-        }
-    }
-
-
-
-    private void OnMouseDown()
-    {
-
-        switch (this.name)
-        {
-            case "Button up":
-                if (body.direction != Direction.DOWN)
-                    body.direction = Direction.UP;
-                break;
-            case "Button down":
-                if (body.direction != Direction.UP)
-                    body.direction = Direction.DOWN;
-                break;
-            case "Button left":
-                if (body.direction != Direction.RIGHT)
-                    body.direction = Direction.LEFT;
-                break;
-            case "Button right":
-                if (body.direction != Direction.LEFT)
-                    body.direction = Direction.RIGHT;
-                break;
-        }
-        if (!start)
-            start = true;
-        body.hasChangedDirection = true;
-        Debug.Log("change direction");
-
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (name.StartsWith("snake"))
-        {
-            if (collision.gameObject.name.StartsWith("mur"))
-            {
-                Debug.Log("Snake se prend un mur !");
-                Debug.Log("DÃ©faite");
-                SceneManager.LoadScene("RamboACAABB");
-            }
-            else
-            {
-                nbPommes++;
-                if (nbPommes == maxPommes)
-                {
-                    Debug.Log("Victoire");
-                    SceneManager.LoadScene("PilotageACAABA");
-                }
-                pomme.transform.position = new Vector3(
-                    UnityEngine.Random.Range(-3.25f, 3.25f),
-                    UnityEngine.Random.Range(-3.25f, 3.25f),
-                    0
+                pomme.GetComponent<RectTransform>().anchoredPosition = new Vector2(
+                    UnityEngine.Random.Range(canvas.transform.GetComponent<CollectCanvas3>().minX, canvas.transform.GetComponent<CollectCanvas3>().maxX),
+                    UnityEngine.Random.Range(canvas.transform.GetComponent<CollectCanvas3>().minY, canvas.transform.GetComponent<CollectCanvas3>().maxY)
                 );
-                double x = pomme.transform.position.x;
-                double y = pomme.transform.position.y;
-                while ((x > -0.5 && x < 0.5 && y > 1.8) || (x < -1.8 && y > -0.5 && y < 0.5) || (x > -0.5 && x < 0.5 && y < -1.8) || (x > -1.6 && y > -0.5 && y < 0.5))
-                {
-                    pomme.transform.position = new Vector3(
-                        UnityEngine.Random.Range(-3.25f, 3.25f),
-                        UnityEngine.Random.Range(-3.25f, 3.25f),
-                        0
-                    );
-                    x = pomme.transform.position.x;
-                    y = pomme.transform.position.y;
-                }
+                x = pomme.GetComponent<RectTransform>().anchoredPosition.x;
+                y = pomme.GetComponent<RectTransform>().anchoredPosition.y;
             }
         }
+    }
+
+    IEnumerator wait(int secondes)
+    {
+        yield return new WaitForSeconds(secondes);
     }
 }

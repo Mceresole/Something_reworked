@@ -34,13 +34,12 @@ public class Collect : MonoBehaviour
 
             GameObject pomme = canvas.transform.GetComponent<CollectCanvas>().pomme;
             float size = canvas.transform.GetComponent<CollectCanvas>().size;
-            pomme.transform.localPosition = new Vector3(
+            pomme.GetComponent<RectTransform>().anchoredPosition = new Vector2(
                 UnityEngine.Random.Range(canvas.transform.GetComponent<CollectCanvas>().minX + size, canvas.transform.GetComponent<CollectCanvas>().maxX - size),
-                UnityEngine.Random.Range(canvas.transform.GetComponent<CollectCanvas>().minY + size, canvas.transform.GetComponent<CollectCanvas>().maxY - size),
-                0
+                UnityEngine.Random.Range(canvas.transform.GetComponent<CollectCanvas>().minY + size, canvas.transform.GetComponent<CollectCanvas>().maxY - size)
             );
-            float x = pomme.transform.localPosition.x;
-            float y = pomme.transform.localPosition.y;
+            float x = pomme.GetComponent<RectTransform>().anchoredPosition.x;
+            float y = pomme.GetComponent<RectTransform>().anchoredPosition.y;
         }
     }
 

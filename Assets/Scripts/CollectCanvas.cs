@@ -44,62 +44,64 @@ public class CollectCanvas : MonoBehaviour
         {
             float width = this.GetComponent<RectTransform>().sizeDelta.x;
             float height = this.GetComponent<RectTransform>().sizeDelta.y;
-            up.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)16.89);
-            up.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)8.91);
-            up.transform.localPosition = new Vector3(width / (float)5.03 - width / 2, -height / (float)2.84 + height / 2, 0);
+            float divWidth = width / (float)1025.2;
+            float divHeight = height / (float)444.4;
+            up.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 70 * divWidth);
+            up.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 70 * divHeight);
+            up.GetComponent<RectTransform>().anchoredPosition = new Vector2(235 * divWidth, -220 * divHeight);
 
-            down.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)16.89);
-            down.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)8.91);
-            down.transform.localPosition = new Vector3(width / (float)5.03 - width / 2, -height / (float)2.01 + height / 2, 0);
+            down.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 70 * divWidth);
+            down.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 70 * divHeight);
+            down.GetComponent<RectTransform>().anchoredPosition = new Vector2(235 * divWidth, -310 * divHeight);
 
-            left.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)16.89);
-            left.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)8.91);
-            left.transform.localPosition = new Vector3(width / (float)7.63 - width / 2, -height / (float)2.31 + height / 2, 0);
+            left.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 70 * divWidth);
+            left.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 70 * divHeight);
+            left.GetComponent<RectTransform>().anchoredPosition = new Vector2(155 * divWidth, -270 * divHeight);
 
-            right.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)16.89);
-            right.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)8.91);
-            right.transform.localPosition = new Vector3(width / (float)3.75 - width / 2, -height / (float)2.31 + height / 2, 0);
+            right.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 70 * divWidth);
+            right.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 70 * divHeight);
+            right.GetComponent<RectTransform>().anchoredPosition = new Vector2(315 * divWidth, -270 * divHeight);
 
-            mur1.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)3.38);
-            mur1.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)31.2);
-            mur1.transform.localPosition = new Vector3(width / (float)1.57 - width / 2, -height / (float)6.30 + height / 2, 0);
+            mur1.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 350 * divWidth);
+            mur1.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 20 * divHeight);
+            mur1.GetComponent<RectTransform>().anchoredPosition = new Vector2(755 * divWidth, -99 * divHeight);
             mur1.transform.GetComponent<BoxCollider>().size = new Vector3(mur1.transform.GetComponent<RectTransform>().sizeDelta.x, mur1.transform.GetComponent<RectTransform>().sizeDelta.y, 1);
-            minY = mur1.transform.localPosition.y - mur1.transform.GetComponent<RectTransform>().sizeDelta.y / 2.0f;
+            maxY = mur1.GetComponent<RectTransform>().anchoredPosition.y - mur1.transform.GetComponent<RectTransform>().sizeDelta.y / 2.0f;
 
-            mur2.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)59.1);
-            mur2.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)1.95);
-            mur2.transform.localPosition = new Vector3(width / (float)2.00 - width / 2, -height / (float)2.51 + height / 2, 0);
+            mur2.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 20 * divWidth);
+            mur2.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 320 * divHeight);
+            mur2.GetComponent<RectTransform>().anchoredPosition = new Vector2(590 * divWidth, -249 * divHeight);
             mur2.transform.GetComponent<BoxCollider>().size = new Vector3(mur2.transform.GetComponent<RectTransform>().sizeDelta.x, mur2.transform.GetComponent<RectTransform>().sizeDelta.y, 1);
-            minX = mur2.transform.localPosition.x + mur2.transform.GetComponent<RectTransform>().sizeDelta.x / 2.0f;
+            minX = mur2.GetComponent<RectTransform>().anchoredPosition.x + mur2.transform.GetComponent<RectTransform>().sizeDelta.x / 2.0f;
 
-            mur3.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)3.38);
-            mur3.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)31.2);
-            mur3.transform.localPosition = new Vector3(width / (float)1.57 - width / 2, -height / (float)1.56 + height / 2, 0);
+            mur3.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 350 * divWidth);
+            mur3.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 20 * divHeight);
+            mur3.GetComponent<RectTransform>().anchoredPosition = new Vector2(755 * divWidth, -399 * divHeight);
             mur3.transform.GetComponent<BoxCollider>().size = new Vector3(mur3.transform.GetComponent<RectTransform>().sizeDelta.x, mur3.transform.GetComponent<RectTransform>().sizeDelta.y, 1);
-            minY = mur3.transform.localPosition.y + mur3.transform.GetComponent<RectTransform>().sizeDelta.y / 2.0f;
+            minY = mur3.GetComponent<RectTransform>().anchoredPosition.y + mur3.transform.GetComponent<RectTransform>().sizeDelta.y / 2.0f;
 
-            mur4.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)59.1);
-            mur4.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)1.95);
-            mur4.transform.localPosition = new Vector3(width / (float)1.28 - width / 2, -height / (float)2.51 + height / 2, 0);
+            mur4.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 20 * divWidth);
+            mur4.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 320 * divHeight);
+            mur4.GetComponent<RectTransform>().anchoredPosition = new Vector2(920 * divWidth, -249 * divHeight);
             mur4.transform.GetComponent<BoxCollider>().size = new Vector3(mur4.transform.GetComponent<RectTransform>().sizeDelta.x, mur4.transform.GetComponent<RectTransform>().sizeDelta.y, 1);
-            maxX = mur4.transform.localPosition.x - mur4.transform.GetComponent<RectTransform>().sizeDelta.x / 2.0f;
+            maxX = mur4.GetComponent<RectTransform>().anchoredPosition.x - mur4.transform.GetComponent<RectTransform>().sizeDelta.x / 2.0f;
 
-            pomme.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)59.1);
-            pomme.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, width / (float)59.1);
-            pomme.transform.localPosition = new Vector3(width / (float)1.56 - width / 2, -height / (float)2.13 + height / 2, 0);
-            pomme.transform.GetComponent<SphereCollider>().radius = pomme.transform.GetComponent<RectTransform>().sizeDelta.x/2.0f;
+            pomme.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 20 * divWidth);
+            pomme.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 20 * divWidth);
+            pomme.GetComponent<RectTransform>().anchoredPosition = new Vector2(760 * divWidth, -293 * divHeight);
+            pomme.transform.GetComponent<SphereCollider>().radius = pomme.transform.GetComponent<RectTransform>().sizeDelta.x / 2.0f;
 
-            snake.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)59.1);
-            snake.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)62.4);
-            snake.transform.localPosition = new Vector3(width / (float)1.38 - width / 2, -height / (float)2.13 + height / 2, 0);
+            snake.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 20 * divWidth);
+            snake.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 10 * divHeight);
+            snake.GetComponent<RectTransform>().anchoredPosition = new Vector2(855 * divWidth, -293 * divHeight);
             snake.transform.GetComponent<CapsuleCollider>().radius = snake.transform.GetComponent<RectTransform>().sizeDelta.y / 2.0f;
             snake.transform.GetComponent<CapsuleCollider>().height = snake.transform.GetComponent<RectTransform>().sizeDelta.x;
             snake.transform.GetComponent<CapsuleCollider>().direction = 0;
             size = snake.transform.GetComponent<RectTransform>().sizeDelta.x / 2.0f;
 
-            nb_pommes.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)3.36);
-            nb_pommes.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)17.33);
-            nb_pommes.transform.localPosition = new Vector3(width / (float)4.13 - width / 2, -height / (float)1.20 + height / 2, 0);
+            nb_pommes.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 352 * divWidth);
+            nb_pommes.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 36 * divHeight);
+            nb_pommes.GetComponent<RectTransform>().anchoredPosition = new Vector2(286 * divWidth, -418 * divHeight);
             nb_pommes.transform.GetComponent<Text>().fontSize = (int)(height / 20.8);
             action.Add("left");
         }
@@ -123,33 +125,36 @@ public class CollectCanvas : MonoBehaviour
                     action_to_add = action[i - 1];
                     s.transform.Rotate(0 ,0 ,90.0f);
                     i--;
+                    fini = true;
                     break;
                 case "-90":
                     need_to_add = true;
                     action_to_add = action[i - 1];
                     s.transform.Rotate(0, 0, -90.0f);
                     i--;
+                    fini = true;
                     break;
                 case "180":
                     need_to_add = true;
                     action_to_add = action[i - 1];
                     s.transform.Rotate(0, 0, 180.0f);
                     i--;
+                    fini = true;
                     break;
                 case "up":
-                    s.transform.localPosition = new Vector3(s.transform.localPosition.x, s.transform.localPosition.y + 10 * SNAKE_SPEED * Time.deltaTime, 0) ;
+                    s.GetComponent<RectTransform>().anchoredPosition = new Vector2(s.GetComponent<RectTransform>().anchoredPosition.x, s.GetComponent<RectTransform>().anchoredPosition.y + 10 * SNAKE_SPEED * Time.deltaTime) ;
                     fini = true;
                     break;
                 case "down":
-                    s.transform.localPosition = new Vector3(s.transform.localPosition.x, s.transform.localPosition.y - 10 * SNAKE_SPEED * Time.deltaTime, 0);
+                    s.GetComponent<RectTransform>().anchoredPosition = new Vector2(s.GetComponent<RectTransform>().anchoredPosition.x, s.GetComponent<RectTransform>().anchoredPosition.y - 10 * SNAKE_SPEED * Time.deltaTime);
                     fini = true;
                     break;
                 case "left":
-                    s.transform.localPosition = new Vector3(s.transform.localPosition.x - 10 * SNAKE_SPEED * Time.deltaTime, s.transform.localPosition.y, 0);
+                    s.GetComponent<RectTransform>().anchoredPosition = new Vector2(s.GetComponent<RectTransform>().anchoredPosition.x - 10 * SNAKE_SPEED * Time.deltaTime, s.GetComponent<RectTransform>().anchoredPosition.y);
                     fini = true;
                     break;
                 case "right":
-                    s.transform.localPosition = new Vector3(s.transform.localPosition.x + 10 * SNAKE_SPEED * Time.deltaTime, s.transform.localPosition.y, 0);
+                    s.GetComponent<RectTransform>().anchoredPosition = new Vector2(s.GetComponent<RectTransform>().anchoredPosition.x + 10 * SNAKE_SPEED * Time.deltaTime, s.GetComponent<RectTransform>().anchoredPosition.y);
                     fini = true;
                     break;
                 default:
@@ -229,7 +234,6 @@ public class CollectCanvas : MonoBehaviour
     {
         while (!isAvaible) yield return null;
         isAvaible = false;
-        //yield return new WaitForSeconds(0.3f);
         Move();
         isAvaible = true;
     }

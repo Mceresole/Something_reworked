@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class CollectCanvas2 : MonoBehaviour
+public class CollectCanvas4 : MonoBehaviour
 {
     private List<string> action = new List<string>();
     private const float SNAKE_SPEED = 5f;
@@ -29,7 +29,7 @@ public class CollectCanvas2 : MonoBehaviour
     public GameObject body;
     public GameObject button_start;
 
-    public int maxPommes = 10;
+    public int maxPommes = 7;
     
     public int nbPommes;
     public float minX;
@@ -108,36 +108,36 @@ public class CollectCanvas2 : MonoBehaviour
             mur4.transform.GetComponent<BoxCollider>().size = new Vector3(mur4.transform.GetComponent<RectTransform>().sizeDelta.x, mur4.transform.GetComponent<RectTransform>().sizeDelta.y, 1);
             maxX = mur4.GetComponent<RectTransform>().anchoredPosition.x - mur4.transform.GetComponent<RectTransform>().sizeDelta.x / 2.0f;
 
-            murInt1.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 50 * divWidth);
-            murInt1.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 20 * divHeight);
-            murInt1.GetComponent<RectTransform>().anchoredPosition = new Vector2(625 * divWidth, -250* divHeight);
+            murInt1.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 40 * divWidth);
+            murInt1.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 40 * divHeight);
+            murInt1.GetComponent<RectTransform>().anchoredPosition = new Vector2(675 * divWidth, -180 * divHeight);
             murInt1.transform.GetComponent<BoxCollider>().size = new Vector3(murInt1.transform.GetComponent<RectTransform>().sizeDelta.x, murInt1.transform.GetComponent<RectTransform>().sizeDelta.y, 1);
             int1minX = murInt1.GetComponent<RectTransform>().anchoredPosition.x - murInt1.transform.GetComponent<RectTransform>().sizeDelta.x / 2.0f;
             int1maxX = murInt1.GetComponent<RectTransform>().anchoredPosition.x + murInt1.transform.GetComponent<RectTransform>().sizeDelta.x / 2.0f;
             int1maxY = murInt1.GetComponent<RectTransform>().anchoredPosition.y + murInt1.transform.GetComponent<RectTransform>().sizeDelta.y / 2.0f;
             int1minY = murInt1.GetComponent<RectTransform>().anchoredPosition.y - murInt1.transform.GetComponent<RectTransform>().sizeDelta.y / 2.0f;
 
-            murInt2.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 20 * divWidth);
-            murInt2.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50 * divHeight);
-            murInt2.GetComponent<RectTransform>().anchoredPosition = new Vector2(750 * divWidth, -365 * divHeight);
+            murInt2.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 40 * divWidth);
+            murInt2.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 40 * divHeight);
+            murInt2.GetComponent<RectTransform>().anchoredPosition = new Vector2(835 * divWidth, -180 * divHeight);
             murInt2.transform.GetComponent<BoxCollider>().size = new Vector3(murInt2.transform.GetComponent<RectTransform>().sizeDelta.x, murInt2.transform.GetComponent<RectTransform>().sizeDelta.y, 1);
             int2minX = murInt2.GetComponent<RectTransform>().anchoredPosition.x - murInt2.transform.GetComponent<RectTransform>().sizeDelta.x / 2.0f;
             int2maxX = murInt2.GetComponent<RectTransform>().anchoredPosition.x + murInt2.transform.GetComponent<RectTransform>().sizeDelta.x / 2.0f;
             int2maxY = murInt2.GetComponent<RectTransform>().anchoredPosition.y + murInt2.transform.GetComponent<RectTransform>().sizeDelta.y / 2.0f;
             int2minY = murInt2.GetComponent<RectTransform>().anchoredPosition.y - murInt2.transform.GetComponent<RectTransform>().sizeDelta.y / 2.0f;
 
-            murInt3.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 50 * divWidth);
-            murInt3.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 20 * divHeight);
-            murInt3.GetComponent<RectTransform>().anchoredPosition = new Vector2(885 * divWidth, -250 * divHeight);
+            murInt3.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 40 * divWidth);
+            murInt3.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 40 * divHeight);
+            murInt3.GetComponent<RectTransform>().anchoredPosition = new Vector2(675 * divWidth, -325 * divHeight);
             murInt3.transform.GetComponent<BoxCollider>().size = new Vector3(murInt3.transform.GetComponent<RectTransform>().sizeDelta.x, murInt3.transform.GetComponent<RectTransform>().sizeDelta.y, 1);
             int3minX = murInt3.GetComponent<RectTransform>().anchoredPosition.x - murInt3.transform.GetComponent<RectTransform>().sizeDelta.x / 2.0f;
             int3maxX = murInt3.GetComponent<RectTransform>().anchoredPosition.x + murInt3.transform.GetComponent<RectTransform>().sizeDelta.x / 2.0f;
             int3maxY = murInt3.GetComponent<RectTransform>().anchoredPosition.y + murInt3.transform.GetComponent<RectTransform>().sizeDelta.y / 2.0f;
             int3minY = murInt3.GetComponent<RectTransform>().anchoredPosition.y - murInt3.transform.GetComponent<RectTransform>().sizeDelta.y / 2.0f;
 
-            murInt4.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 20 * divWidth);
-            murInt4.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50 * divHeight);
-            murInt4.GetComponent<RectTransform>().anchoredPosition = new Vector2(750 * divWidth, -130 * divHeight);
+            murInt4.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 40 * divWidth);
+            murInt4.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 40 * divHeight);
+            murInt4.GetComponent<RectTransform>().anchoredPosition = new Vector2(835 * divWidth, -325 * divHeight);
             murInt4.transform.GetComponent<BoxCollider>().size = new Vector3(murInt4.transform.GetComponent<RectTransform>().sizeDelta.x, murInt4.transform.GetComponent<RectTransform>().sizeDelta.y, 1);
             int4minX = murInt4.GetComponent<RectTransform>().anchoredPosition.x - murInt4.transform.GetComponent<RectTransform>().sizeDelta.x / 2.0f;
             int4maxX = murInt4.GetComponent<RectTransform>().anchoredPosition.x + murInt4.transform.GetComponent<RectTransform>().sizeDelta.x / 2.0f;

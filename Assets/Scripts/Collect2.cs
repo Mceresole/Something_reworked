@@ -19,7 +19,7 @@ public class Collect2 : MonoBehaviour
         {
             gameOver.SetActive(true);
             StartCoroutine(wait(2));
-            SceneManager.LoadScene("ExplosionAAAAAB");
+            SceneManager.LoadScene("SushiAABB");
         }
         else if (collision.gameObject.name.StartsWith("pomme"))
         {
@@ -29,29 +29,31 @@ public class Collect2 : MonoBehaviour
             {
                 victoire.SetActive(true);
                 StartCoroutine(wait(2));
-                SceneManager.LoadScene("ArchiveAAAAAA");
+                SceneManager.LoadScene("CuisineAABA");
             }
 
             GameObject pomme = canvas.transform.GetComponent<CollectCanvas2>().pomme;
-            pomme.transform.localPosition = new Vector3(
+            pomme.GetComponent<RectTransform>().anchoredPosition = new Vector2(
                 UnityEngine.Random.Range(canvas.transform.GetComponent<CollectCanvas2>().minX, canvas.transform.GetComponent<CollectCanvas2>().maxX),
-                UnityEngine.Random.Range(canvas.transform.GetComponent<CollectCanvas2>().minY, canvas.transform.GetComponent<CollectCanvas2>().maxY),
-                0
+                UnityEngine.Random.Range(canvas.transform.GetComponent<CollectCanvas2>().minY, canvas.transform.GetComponent<CollectCanvas2>().maxY)
             );
-            float x = pomme.transform.localPosition.x;
-            float y = pomme.transform.localPosition.y;
+            float x = pomme.GetComponent<RectTransform>().anchoredPosition.x;
+            float y = pomme.GetComponent<RectTransform>().anchoredPosition.y;
             while ((x > canvas.transform.GetComponent<CollectCanvas2>().int1minX && x < canvas.transform.GetComponent<CollectCanvas2>().int1maxX
                             && y > canvas.transform.GetComponent<CollectCanvas2>().int1minY && y < canvas.transform.GetComponent<CollectCanvas2>().int1maxY) ||
                     (x > canvas.transform.GetComponent<CollectCanvas2>().int2minX && x < canvas.transform.GetComponent<CollectCanvas2>().int2maxX
-                            && y > canvas.transform.GetComponent<CollectCanvas2>().int2minY && y < canvas.transform.GetComponent<CollectCanvas2>().int2maxY))
+                            && y > canvas.transform.GetComponent<CollectCanvas2>().int2minY && y < canvas.transform.GetComponent<CollectCanvas2>().int2maxY) ||
+                    (x > canvas.transform.GetComponent<CollectCanvas2>().int3minX && x < canvas.transform.GetComponent<CollectCanvas2>().int3maxX
+                            && y > canvas.transform.GetComponent<CollectCanvas2>().int3minY && y < canvas.transform.GetComponent<CollectCanvas2>().int3maxY) ||
+                    (x > canvas.transform.GetComponent<CollectCanvas2>().int4minX && x < canvas.transform.GetComponent<CollectCanvas2>().int4maxX
+                            && y > canvas.transform.GetComponent<CollectCanvas2>().int4minY && y < canvas.transform.GetComponent<CollectCanvas2>().int4maxY))
             {
-                pomme.transform.localPosition = new Vector3(
+                pomme.GetComponent<RectTransform>().anchoredPosition = new Vector2(
                     UnityEngine.Random.Range(canvas.transform.GetComponent<CollectCanvas2>().minX, canvas.transform.GetComponent<CollectCanvas2>().maxX),
-                    UnityEngine.Random.Range(canvas.transform.GetComponent<CollectCanvas2>().minY, canvas.transform.GetComponent<CollectCanvas2>().maxY),
-                    0
+                    UnityEngine.Random.Range(canvas.transform.GetComponent<CollectCanvas2>().minY, canvas.transform.GetComponent<CollectCanvas2>().maxY)
                 );
-                x = pomme.transform.localPosition.x;
-                y = pomme.transform.localPosition.y;
+                x = pomme.GetComponent<RectTransform>().anchoredPosition.x;
+                y = pomme.GetComponent<RectTransform>().anchoredPosition.y;
             }
         }
     }
