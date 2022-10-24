@@ -61,71 +61,73 @@ public class Memory : MonoBehaviour
 
             float width = canvas.transform.GetComponent<RectTransform>().sizeDelta.x;
             float height = canvas.transform.GetComponent<RectTransform>().sizeDelta.y;
+            float divWidth = width / (float)1125.2;
+            float divHeight = height / (float)598.4;
 
             //card_1
-            card_1.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)10.0);
-            card_1.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)2.8);
-            card_1.transform.localPosition = new Vector3(width / (float)15.0 - width / 2, -height / (float)4.6 + height / 2, 0);
+            card_1.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, divWidth * 119);
+            card_1.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, divHeight * 217);
+            card_1.GetComponent<RectTransform>().anchoredPosition = new Vector2(divWidth * (float)79.5, -divHeight * (float)128.5);
 
             //card_2
-            card_2.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)10.0);
-            card_2.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)2.8);
-            card_2.transform.localPosition = new Vector3(width / (float)10.0 - width / 2, -height / (float)1.6 + height / 2, 0);
+            card_2.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, divWidth * 119);
+            card_2.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, divHeight * 217);
+            card_2.GetComponent<RectTransform>().anchoredPosition = new Vector2(divWidth * (float)119.5, -divHeight * (float)368.5);
 
             //card_3
-            card_3.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)10.0);
-            card_3.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)2.8);
-            card_3.transform.localPosition = new Vector3(width / (float)6.7 - width / 2, -height / (float)3.2 + height / 2, 0);
+            card_3.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, divWidth * 119);
+            card_3.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, divHeight * 217);
+            card_3.GetComponent<RectTransform>().anchoredPosition = new Vector2(divWidth * (float)179.5, -divHeight * (float)188.5);
 
             //card_4
-            card_4.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)10.0);
-            card_4.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)2.8);
-            card_4.transform.localPosition = new Vector3(width / (float)4.6 - width / 2, -height / (float)1.5 + height / 2, 0);
+            card_4.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, divWidth * 119);
+            card_4.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, divHeight * 217);
+            card_4.GetComponent<RectTransform>().anchoredPosition = new Vector2(divWidth * (float)259.5, -divHeight * (float)408.5);
 
             //card_5
-            card_5.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)10.0);
-            card_5.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)2.8);
-            card_5.transform.localPosition = new Vector3(width / (float)3.3 - width / 2, -height / (float)3.5 + height / 2, 0);
+            card_5.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, divWidth * 119);
+            card_5.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, divHeight * 217);
+            card_5.GetComponent<RectTransform>().anchoredPosition = new Vector2(divWidth * (float)359.5, -divHeight * (float)168.5);
 
             //card_6
-            card_6.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)10.0);
-            card_6.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)2.8);
-            card_6.transform.localPosition = new Vector3(width / (float)2.4 - width / 2, -height / (float)1.5 + height / 2, 0);
+            card_6.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, divWidth * 119);
+            card_6.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, divHeight * 217);
+            card_6.GetComponent<RectTransform>().anchoredPosition = new Vector2(divWidth * (float)499.5, -divHeight * (float)388.5);
 
             //card_7
-            card_7.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)10.0);
-            card_7.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)2.8);
-            card_7.transform.localPosition = new Vector3(width / (float)2.4 - width / 2, -height / (float)4.0 + height / 2, 0);
+            card_7.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, divWidth * 119);
+            card_7.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, divHeight * 217);
+            card_7.GetComponent<RectTransform>().anchoredPosition = new Vector2(divWidth * (float)499.5, -divHeight * (float)148.5);
 
             //card_8
-            card_8.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)10.0);
-            card_8.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)2.8);
-            card_8.transform.localPosition = new Vector3(width / (float)1.9 - width / 2, -height / (float)4.6 + height / 2, 0);
+            card_8.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, divWidth * 119);
+            card_8.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, divHeight * 217);
+            card_8.GetComponent<RectTransform>().anchoredPosition = new Vector2(divWidth * (float)639.5, -divHeight * (float)128.5);
 
             //card_9
-            card_9.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)10.0);
-            card_9.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)2.8);
-            card_9.transform.localPosition = new Vector3(width / (float)1.7 - width / 2, -height / (float)1.3 + height / 2, 0);
+            card_9.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, divWidth * 119);
+            card_9.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, divHeight * 217);
+            card_9.GetComponent<RectTransform>().anchoredPosition = new Vector2(divWidth * (float)699.5, -divHeight * (float)468.5);
 
             //card_10
-            card_10.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)10.0);
-            card_10.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)2.8);
-            card_10.transform.localPosition = new Vector3(width / (float)1.6 - width / 2, -height / (float)2.6 + height / 2, 0);
+            card_10.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, divWidth * 119);
+            card_10.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, divHeight * 217);
+            card_10.GetComponent<RectTransform>().anchoredPosition = new Vector2(divWidth * (float)759.5, -divHeight * (float)228.5);
 
             //card_11
-            card_11.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)10.0);
-            card_11.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)2.8);
-            card_11.transform.localPosition = new Vector3(width / (float)1.3 - width / 2, -height / (float)1.6 + height / 2, 0);
+            card_11.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, divWidth * 119);
+            card_11.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, divHeight * 217);
+            card_11.GetComponent<RectTransform>().anchoredPosition = new Vector2(divWidth * (float)899.5, -divHeight * (float)368.5);
 
             //card_12
-            card_12.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)10.0);
-            card_12.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)2.8);
-            card_12.transform.localPosition = new Vector3(width / (float)1.2 - width / 2, -height / (float)2.6 + height / 2, 0);
+            card_12.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, divWidth * 119);
+            card_12.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, divHeight * 217);
+            card_12.GetComponent<RectTransform>().anchoredPosition = new Vector2(divWidth * (float)1019.5, -divHeight * (float)228.5);
 
             //error
-            err.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width / (float)5.0);
-            err.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height / (float)11.5);
-            err.transform.localPosition = new Vector3(width / (float)1.2 - width / 2, -height / (float)21.0 + height / 2, 0);
+            err.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, divWidth * 239);
+            err.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, divHeight * 57);
+            err.GetComponent<RectTransform>().anchoredPosition = new Vector2(divWidth * (float)1019.5, -divHeight * (float)28.5);
 
 
             flag = true;

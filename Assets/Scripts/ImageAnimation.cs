@@ -7,6 +7,8 @@ using UnityEditor;
 public class ImageAnimation : MonoBehaviour
 {
     public float speed;
+    public Sprite image1;
+    public Sprite image2;
 
     private Animator animator;
     private Image image;
@@ -28,7 +30,8 @@ public class ImageAnimation : MonoBehaviour
         }
         else
         {
-            sprites = GetSpritesFromAnimator(animator);
+            sprites.Add(image1);
+            sprites.Add(image2);
             curIdx = 0;
             curTime = speed;
             valid = true;
@@ -65,32 +68,4 @@ public class ImageAnimation : MonoBehaviour
             }
         }
     }
-
-#if UNITY_EDITOR
-   public static List<Sprite> GetSpritesFromAnimator(Animator anim)
-   {
-       List<Sprite> _allSprites = new List<Sprite> ();
-       foreach(AnimationClip ac in anim.runtimeAnimatorController.animationClips)
-       {
-           _allSprites.AddRange(GetSpritesFromClip(ac));
-       }
-       return _allSprites;
-   }
-
-   private static List<Sprite> GetSpritesFromClip(AnimationClip clip)
-   {
-       var _sprites = new List<Sprite> ();
-       if (clip != null)
-       {
-           foreach (var binding in AnimationUtility.GetObjectReferenceCurveBindings (clip))
-           {
-               ObjectReferenceKeyframe[] keyframes = AnimationUtility.GetObjectReferenceCurve (clip, binding);
-               foreach (var frame in keyframes) {
-                   _sprites.Add ((Sprite)frame.value);
-               }
-           }
-       }
-       return _sprites;
-   }
-#endif
 }
